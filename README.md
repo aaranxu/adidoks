@@ -14,7 +14,7 @@ Before using the theme, you need to install the [Zola](https://www.getzola.org/d
 ## Quick Start
 
 ```bash
-git clone git@github.com:aaranxu/adidoks.git
+git clone https://github.com/aaranxu/adidoks.git
 cd adidoks
 zola serve
 # open http://127.0.0.1:1111/ in the browser
@@ -39,7 +39,7 @@ Download this theme to your themes directory:
 
 ```bash
 cd mysite/themes
-git clone git@github.com:aaranxu/adidoks.git
+git clone https://github.com/aaranxu/adidoks.git
 ```
 
 Or install as a submodule:
@@ -47,7 +47,7 @@ Or install as a submodule:
 ```bash
 cd mysite
 git init  # if your project is a git repository already, ignore this command
-git submodule add git@github.com:aaranxu/adidoks.git themes/adidoks
+git submodule add https://github.com/aaranxu/adidoks.git themes/adidoks
 ```
 
 ### Step 3: Configuration
@@ -117,7 +117,7 @@ build_search_index = true
 
 The following options should be under the `[extra]` in `config.toml`
 
-- `alanguage_code` - set HTML file language (default to `en-US`)
+- `language_code` - set HTML file language (default to `en-US`)
 - `theme_color` - your site's HTML color (default to `#fff`)
 - `title_separator` - the separator to your site title, like `|` and `-` (defaults to `|`)
 - `title_addition` - the additon content for the title of the homepage
@@ -131,9 +131,6 @@ The following options should be under the `[extra]` in `config.toml`
 - `[[extra.menu.social]]` - the social links on the header of the page
 - `[extra.footer]` - the footer content on the left
 - `[[extra.footer.nav]]` - the footer navigations on the right
-- `[extra.home]` - the main content of the homepage
-- `[[extra.home.list]]` - the lists' content of the homepage
-
 
 ### Templates
 
@@ -143,7 +140,10 @@ All pages are extend to the `base.html`, and you can customize them as need.
 
 #### Homepage
 
-Go to the `config.toml` to set your own homepage content.
+Go to the *content/_index.md* file to add your own homepage content.
+
+- `[extra]` - the main content of the homepage
+- `[[extra.ist]]` - the lists' content of the homepage
 
 #### Sections
 

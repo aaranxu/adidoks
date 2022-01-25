@@ -16,7 +16,7 @@ top = false
 
 ## Requirements
 
-Before using the theme, you need to install the [Zola](https://www.getzola.org/documentation/getting-started/installation/) ≥ 0.13.0.
+Before using the theme, you need to install the [Zola](https://www.getzola.org/documentation/getting-started/installation/) ≥ 0.15.0.
 
 ## Run the Theme Directly
 

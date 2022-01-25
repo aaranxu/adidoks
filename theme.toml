@@ -2,7 +2,7 @@ name = "adidoks"
 description = "AdiDoks is a Zola theme helping you build modern documentation."
 license = "MIT"
 homepage = "https://github.com/aaranxu/adidoks"
-min_version = "0.13.0"
+min_version = "0.15.0"
 demo = "https://adidoks.netlify.app/"
 
 [extra]

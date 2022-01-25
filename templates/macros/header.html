@@ -27,7 +27,19 @@
 		</ul>
 		<div class="collapse navbar-collapse order-4 order-md-1">
 			<ul class="navbar-nav main-nav me-auto order-5 order-md-2">
-				{% if config.extra.menu.main %}
+				{% if lang == config.default_language %}
+					{% set rootsectionpath = "_index.md" %}
+				{% else %}
+					{% set rootsectionpath = "_index." ~ lang ~ ".md" %}
+				{% endif %}
+				{% set mainsec = get_section(path=rootsectionpath) %}
+				{% if mainsec.extra.menu.main %}
+					{% for val in mainsec.extra.menu.main %}
+						<li class="nav-item{% if current_section == val.section %} {{ current_section }} active{% endif %}">
+							<a class="nav-link" href="{{ get_url(path=val.url, trailing_slash=true) | safe }}">{{ val.name }}</a>
+						</li>
+					{% endfor %}
+				{% elif config.extra.menu.main %}
 					{% for val in config.extra.menu.main %}
 						<li class="nav-item{% if current_section == val.section %} {{ current_section }} active{% endif %}">
 							<a class="nav-link" href="{{ get_url(path=val.url, trailing_slash=true) | safe }}">{{ val.name }}</a>

@@ -11,6 +11,19 @@ repo_version = "GitHub v0.1.0"
 repo_license = "Open-source MIT License."
 repo_url = "https://github.com/aaranxu/adidoks"
 
+# Menu items
+[[extra.menu.main]]
+name = "Docs"
+section = "docs"
+url = "/docs/getting-started/introduction/"
+weight = 10
+
+[[extra.menu.main]]
+name = "Blog"
+section = "blog"
+url = "/blog/"
+weight = 20
+
 [[extra.list]]
 title = "Security aware"
 content = 'Get A+ scores on <a href="https://observatory.mozilla.org/analyze/adidoks.org">Mozilla Observatory</a> out of the box. Easily change the default Security Headers to suit your needs.'

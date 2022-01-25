@@ -191,7 +191,7 @@ body.dark pre code::-webkit-scrollbar-thumb {
   background: $border-dark;
 }
 
-body.dark code:not(.hljs) {
+body.dark pre:not(.hljs) {
   background: $body-overlay-dark;
   color: $body-color-dark;
 }

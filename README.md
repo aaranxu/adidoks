@@ -143,7 +143,7 @@ All pages are extend to the `base.html`, and you can customize them as need.
 Go to the *content/_index.md* file to add your own homepage content.
 
 - `[extra]` - the main content of the homepage
-- `[[extra.ist]]` - the lists' content of the homepage
+- `[[extra.list]]` - the lists' content of the homepage
 
 #### Sections
 

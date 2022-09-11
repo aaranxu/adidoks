@@ -3,8 +3,6 @@
 {% extends "page.html" %}
 
 {% block seo %}
-  {# This value is matched by the config.extra.menu.main->section #}
-  {% set_global current_section = 'blog' %}
   {{ super() }}
 {% endblock seo %}
 

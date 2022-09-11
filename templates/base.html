@@ -18,6 +18,12 @@
 {{ macros_head::resource() }}
 {{ macros_head::stylesheet() }}
 
+{% if current_path -%}
+  {% set current_section = current_path | split(pat="/") | nth(n=1) -%}
+{% else -%}
+  {% set current_section = '/' -%}
+{% endif -%}
+
 {% block seo %}
   {% if config.extra.title_separator %}
     {% set title_separator = " " ~ config.extra.title_separator ~ " " %}

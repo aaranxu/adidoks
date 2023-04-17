@@ -129,4 +129,5 @@ weight = 10
 [[extra.footer.nav]]
 name = "Code of Conduct"
 url = "/docs/contributing/code-of-conduct/"
+is_absolute_url = false
 weight = 20

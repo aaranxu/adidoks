@@ -131,6 +131,7 @@ The following options should be under the `[extra]` in `config.toml`
 - `[[extra.menu.social]]` - the social links on the header of the page
 - `[extra.footer]` - the footer content on the left
 - `[[extra.footer.nav]]` - the footer navigations on the right
+  - `is_absolute_url` - whether to treat `url` as an absolute url (default to `false`, aka `url` is treated relatively)
 
 ### Templates
 

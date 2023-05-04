@@ -77,7 +77,7 @@
   <meta name="twitter:description" content="{{ description }}">
   <meta name="twitter:site" content="@{{ config.extra.open.twitter_site }}">
   <meta name="twitter:creator" content="@{{ config.extra.open.twitter_creator }}">
-  
+
   <meta property="og:title" content="{{ title }}">
   <meta property="og:description" content="{{ description }}">
   <meta property="og:type" content="{{ type }}">
@@ -205,50 +205,56 @@
   {
     "@context": "http://schema.org",
     "@type": "BreadcrumbList",
-    {% if page_path == "/" %}
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Home",
-      "item": "{{ url_item | safe }}"
-    },
-    {% else %}
-      {% set paths = page_path | trim_start_matches(pat="/") | trim_end_matches(pat="/") | split(pat="/") %}
-      {% for val in paths %}
-        {% set name_array = val | split(pat="-") %}
-        {% set_global str = "" %}
-        {% for val in name_array %}
-        {% set cap_val = val | capitalize %}
-        {% set_global str = str ~ cap_val ~ " " %}
+    "itemListElement": [
+      {% if page_path == "/" %}
+      {
+        "@type": "ListItem",
+        "position":  1 ,
+        "name": "Home",
+        "item": "{{ url_item | safe }}"
+      },
+      {% else %}
+        {% set paths = page_path | trim_start_matches(pat="/") | trim_end_matches(pat="/") | split(pat="/") %}
+        {% for val in paths %}
+          {% set name_array = val | split(pat="-") %}
+          {% set_global str = "" %}
+          {% for val in name_array %}
+          {% set cap_val = val | capitalize %}
+          {% set_global str = str ~ cap_val ~ " " %}
+          {% endfor %}
+          {% set name = str | trim_end_matches(pat=" ") | title %}
+          {% if not index %}
+            {
+              "@type": "ListItem",
+              "position":  1 ,
+              "name": "Home",
+              "item": "{{ url_item | safe }}"
+            },
+            {% set_global index = 2 %}
+            {% set_global url_item = url_item ~ val ~ "/" %}
+            {
+              "@type": "ListItem",
+              "position":  {{ index }} ,
+              "name": "{{ name }}",
+              "item": "{{ url_item | safe }}"
+            },
+          {% else %}
+            {% set_global index = index + 1 %}
+            {% set_global url_item = url_item ~ val ~ "/" %}
+            {
+              "@type": "ListItem",
+              "position":  {{ index }} ,
+              "name": "{{ name }}",
+              "item": "{{ url_item | safe }}"
+            },
+          {% endif %}
         {% endfor %}
-        {% set name = str | trim_end_matches(pat=" ") | title %}
-        {% if not index %}
-          {
-            "@type": "ListItem",
-            "position":  1 ,
-            "name": "Home",
-            "item": "{{ url_item | safe }}"
-          },
-          {% set_global index = 2 %}
-          {% set_global url_item = url_item ~ val ~ "/" %}
-          {
-            "@type": "ListItem",
-            "position":  {{ index }} ,
-            "name": "{{ name }}",
-            "item": "{{ url_item | safe }}"
-          },
-        {% else %}
-          {% set_global index = index + 1 %}
-          {% set_global url_item = url_item ~ val ~ "/" %}
-          {
-            "@type": "ListItem",
-            "position":  {{ index }} ,
-            "name": "{{ name }}",
-            "item": "{{ url_item | safe }}"
-          },
-        {% endif %}
-      {% endfor %}
-    {% endif %}
+      {% endif %}
+
+      {# The above code results in a trailing comma in the array #}
+      {# JSON does not allow this, so we hack around this by inserting a dummy element `[]` #}
+      []
+    ]
   }
 </script>
 

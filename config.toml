@@ -45,6 +45,10 @@ include_content = true
 highlight_code = true
 
 [extra]
+
+# Enable navigation between pages
+navigation = true
+
 # Put all your custom variables here
 author = "Aaran Xu"
 github = "https://github.com/aaranxu"

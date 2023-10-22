@@ -19,8 +19,18 @@
   {% else %}
     {% set description = config.description %}
   {% endif %}
-  {% set created_time = page.date %}
-  {% set updated_time = page.updated %}
+
+  {% if page.date %}
+    {% set created_time = page.date %}
+  {% else %}
+    {% set created_time = "" %}
+  {% endif %}
+  {% if page.updated %}
+    {% set updated_time = page.updated %}
+  {% else %}
+    {% set updated_time = "" %}
+  {% endif %}
+
   {% if current_section %}
     {% set page_section = current_section %}
   {% else %}
